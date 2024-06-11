@@ -48,7 +48,7 @@ FROM commodities
 WHERE data = '2023-06-07';
 
 # Diagramas 
-![Logo](https://github.com/usuario/repositorio/raw/main/images/logo.png)
+![Logo](https://github.com/thiagoramos20042/ETL/blob/main/imagem.png)
 
 
 
