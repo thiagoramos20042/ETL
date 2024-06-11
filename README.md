@@ -48,6 +48,7 @@ FROM commodities
 WHERE data = '2023-06-07';
 
 # Diagramas 
+![Logo](https://github.com/usuario/repositorio/raw/main/images/logo.png)
 
 
 
