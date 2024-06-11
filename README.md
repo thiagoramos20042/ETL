@@ -3,13 +3,22 @@ Este projeto implementa um pipeline ETL (Extração, Transformação e Carga) pa
 
 # Estrutura do projeto
 ├── data/
+
 │   ├── dw/
+
 │   │   └── commodities_dw.db
+
 │   ├── external/
+
 │   │   └── movimentacao_commodities.csv
+
+
 ├── extract.py
+
 ├── transforme.py
+
 ├── load.py
+
 └── README.md
 
 Para instalar as dependências, execute:
