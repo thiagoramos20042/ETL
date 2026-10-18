@@ -1,64 +1,53 @@
-# Projeto de ETL para Análise de Commodities
-Este projeto implementa um pipeline ETL (Extração, Transformação e Carga) para analisar dados de commodities, como petróleo bruto, ouro e prata. Utilizamos a biblioteca yfinance para extrair dados históricos das commodities, processamos dados de movimentação e armazenamos os dados resultantes em um banco de dados SQLite.
+# ETL | Cotações e movimentações de commodities
 
-# Estrutura do projeto
-├── data/
+Pipeline que integra preços de commodities com movimentações e carrega os dados em SQLite.
 
-│   ├── dw/
+**Engenharia de dados** · Pipeline ETL
 
-│   │   └── commodities_dw.db
+[← Portfólio de Thiago Oliveira](https://github.com/thiagoramos20042/thiagoramos20042) · [Catálogo de projetos](https://github.com/thiagoramos20042/thiagoramos20042/blob/main/PROJETOS.md)
 
-│   ├── external/
+## Objetivo
 
-│   │   └── movimentacao_commodities.csv
+Conectar cotações de petróleo, ouro e prata às operações de uma base de movimentação para análise.
 
+## O que você encontra
 
-├── extract.py
+- Extração de cotações com yfinance.
+- Padronização de datas e integração com movimentações.
+- Cálculo de valor/ganho por operação e carga na tabela commodities.
 
-├── transforme.py
+## Tecnologias
 
-├── load.py
+Python · pandas · yfinance · Loguru · SQLite
 
-└── README.md
+## Arquivos principais
 
-Para instalar as dependências, execute:
-pip install pandas yfinance
+| Arquivo | Conteúdo |
+| --- | --- |
+| [extract.py](extract.py) | Busca de cotações e registro de logs. |
+| [transforme.py](transforme.py) | Tratamento e integração dos dados. |
+| [load.py](load.py) | Orquestração e carga no banco local. |
+| [imagem.png](imagem.png) | Diagrama do projeto. |
 
-# Descrição dos Arquivos 
-extract.py
-Extrai dados históricos das commodities utilizando a API do Yahoo Finance.
+## Como explorar
 
-transforme.py
-Trata os dados extraídos, processa dados de movimentação e integra os dados.
+Prepare data/movimentacao_commodities.csv com as colunas date, symbol, quantity e action, e crie a pasta data/dw. Esse CSV de entrada não está versionado. Depois, na raiz:
 
-load.py
-Carrega os dados integrados em um banco de dados SQLite.
-
-# Executando o Projeto
-1- Executando o Projeto
-Execute extract.py para extrair dados históricos das commodities.
-python extract.py
-
-2- Transformação de Dados
-Execute transforme.py para tratar, processar e integrar os dados.
-python transforme.py
-
-3- Carregamento de Dados:
-Execute load.py para carregar os dados integrados no banco de dados SQLite.
+```bash
+python -m pip install pandas yfinance loguru
 python load.py
+```
 
-# Estrutura do Banco de Dados
-Os dados integrados são armazenados em um banco de dados SQLite no arquivo data/dw/commodities_dw.db, na tabela commodities.
+load.py chama as funções de extração e transformação e grava data/dw/commodities_dw.db.
 
-# Consultas úteis
-Verificar transações em uma data específica
-SELECT *
-FROM commodities
-WHERE data = '2023-06-07';
+## Visualização
 
-# Diagramas 
-![Logo](https://github.com/thiagoramos20042/ETL/blob/main/imagem.png)
+![Diagrama do pipeline de commodities](imagem.png)
 
+## Contexto do projeto
 
+A integração usa data e símbolo da commodity como chaves. O código atribui valor positivo a operações sell e negativo às demais ações.
 
+---
 
+Integra o [portfólio de Thiago Oliveira](https://github.com/thiagoramos20042).
